@@ -1,0 +1,28 @@
+{
+  "Tag": {
+    "5umux5dub72frct2rj6s31bhr2iai63y": {
+      "id": "5umux5dub72frct2rj6s31bhr2iai63y",
+      "name": "Hello"
+    },
+    "1i4cm471r01rqxs4l4d0bqpi4uopz1sl": {
+      "id": "1i4cm471r01rqxs4l4d0bqpi4uopz1sl",
+      "name": "Again"
+    },
+    "5vqjymhgf143yl4ukj43n6jf1fuqr1rx": {
+      "id": "5vqjymhgf143yl4ukj43n6jf1fuqr1rx",
+      "name": "Cool"
+    }
+  },
+  "Artefact": {
+    "3o04pyo59530ck4h7tsvl594wcxx2s2l": {
+      "id": "3o04pyo59530ck4h7tsvl594wcxx2s2l",
+      "tags": [
+        "Again",
+        "Again",
+        "Hello",
+        "Cool"
+      ],
+      "artefactName": "C:\\Users\\stoke\\StudioProjects\\researchify\\notes\\test_file.md"
+    }
+  }
+}

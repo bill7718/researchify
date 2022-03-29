@@ -1,0 +1,29 @@
+{
+  "name": "Yeovil",
+  "description": "General Npm",
+  "scripts": {
+    "upgrade_dartdoc": "pub global activate dartdoc",
+    "test": "flutter test --coverage",
+    "doc": "dartdoc -q dartdoc ",
+    "fullDoc": "dartdoc --auto-include-dependencies",
+    "show_doc": "dhttpd --path doc/api",
+    "all": "npm run test && npm run show_coverage  && npm run doc && npm run show_doc",
+    "part": "npm run test && npm run show_coverage",
+    "show_coverage": "dart run vm/vm_poc.dart",
+    "gherkin": "dart test_driver/app_test.dart",
+    "report": "node test_driver/reporter/index.js",
+    "bdd": "npm run gherkin && npm run report",
+    "tests": "flutter test test_manual/all_test.dart",
+    "index": "dhttpd --path doc",
+    "build_web": "flutter build web --base-href=/build/web/",
+    "launch_web":  "dhttpd --port=8081"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "build/node/index.dart.js",
+  "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0"
+  },
+  "private": true
+}

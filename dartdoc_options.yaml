@@ -1,0 +1,27 @@
+
+dartdoc:
+  ignore:
+    - broken-link
+    - missing-from-search-index
+    - unresolved-export
+    - unresolved-doc-reference
+    - no-canonical-found
+    - unknown-file
+    - no-documentable-libraries
+    - reexported-private-api-across-packages
+
+  include: [ researchify, dependencies ]
+  categories:
+    Overview:
+      markdown: README.md
+    Contents:
+      markdown: notes/test_file.md
+
+
+
+
+
+
+
+
+

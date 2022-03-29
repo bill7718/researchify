@@ -1,0 +1,41 @@
+name: researchify
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  serializable_data:
+    git: https://github.com/bill7718/serializable_data
+
+  waterloo:
+    git: https://github.com/bill7718/waterloo
+
+  caitlin:
+    git: https://github.com/bill7718/caitlin
+  provider: ^6.0.2
+  injector: ^2.0.0
+  font_awesome_flutter: ^10.1.0
+  google_fonts: ^2.1.0
+  flutter_markdown: ^0.6.9
+  file_picker: ^4.5.0
+  webview_windows: ^0.1.5
+  screenshot: ^1.2.3
+  image: ^3.1.3
+  http: ^0.13.4
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true

@@ -36,7 +36,8 @@ class ResearchifyController extends MappedJourneyController {
           UserJourneyController.saveEvent: handleCreateTag,
           UserJourneyController.backEvent: LandingPage.route
         },
-        TagFilePage.route: {TagFilePage.addTagEvent: handleAddTag}
+        TagFilePage.route: {TagFilePage.addTagEvent: handleAddTag},
+
       };
 
   @override
@@ -111,6 +112,28 @@ class ResearchifyController extends MappedJourneyController {
         this,
         DataObjectJourneyFormInputState(tags,
             specifications: dataSpecification()));
+
+    c.complete();
+    return c.future;
+  }
+
+  Future<void> saveUrlNote(context, output) async {
+    var c = Completer<void>();
+
+    var urlNote = await state.queryOrCreate<UrlNotes>(
+        field: UrlNotes.urlLabel, value: output.first);
+    urlNote.set(UrlNotes.commentLabel, output[1]);
+
+    c.complete();
+    return c.future;
+  }
+
+  Future<void> saveUrlHash(context, output) async {
+    var c = Completer<void>();
+
+    var urlNote = await state.queryOrCreate<UrlNotes>(
+        field: UrlNotes.urlLabel, value: output.first);
+    urlNote.set(UrlNotes.hashLabel, output[1]);
 
     c.complete();
     return c.future;

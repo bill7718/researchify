@@ -4,6 +4,7 @@ import 'package:serializable_data/serializable_data.dart';
 void registerDataDependencies() {
   Injector.appInstance.registerDependency<Tag>(() => Tag());
   Injector.appInstance.registerDependency<Artefact>(() => Artefact());
+  Injector.appInstance.registerDependency<UrlNotes>(() => UrlNotes());
 }
 
 Map<String, String> dataText = {
@@ -66,5 +67,17 @@ class Artefact extends PersistableDataObject {
       set(tagsLabel, list);
     }
   }
+
+}
+
+class UrlNotes extends PersistableDataObject {
+  static const String objectType = 'UrlNotes';
+
+  static const String urlLabel = 'url';
+  static const String commentLabel = 'comment';
+  static const String hashLabel = 'hash';
+
+  UrlNotes() : super(objectType);
+
 
 }

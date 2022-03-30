@@ -1,5 +1,5 @@
 {
-  "name": "Yeovil",
+  "name": "Researchify",
   "description": "General Npm",
   "scripts": {
     "upgrade_dartdoc": "pub global activate dartdoc",

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:researchify/services/researchify_data.dart';
 import 'package:researchify/widgets/researchify_scaffold.dart';
-import 'package:waterloo/alpha/waterloo_file_uploader.dart';
 import 'package:waterloo/data_object_widgets.dart';
 import 'package:waterloo/waterloo.dart';
 

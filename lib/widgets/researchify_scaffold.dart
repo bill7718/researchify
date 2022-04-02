@@ -27,7 +27,7 @@ class ResearchifyScaffold extends StatelessWidget {
         children: [
           if (availableWidth > 600) const ResearchifyLeftMenu(),
           Expanded(child: body),
-          if (availableWidth > 800 && rhPanel != null) Container(width: 200,),
+          if (availableWidth > 800 && rhPanel != null) Container(width: 200, child: rhPanel,),
         ],
       ),);
     });

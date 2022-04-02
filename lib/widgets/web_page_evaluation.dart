@@ -24,7 +24,6 @@ import 'package:http/http.dart' as http;
 ///
 
 class WebPageEvaluation extends StatelessWidget {
-
   static const String saveUrlNoteEvent = 'saveUrlNote';
 
   /// The url of the web page to display
@@ -52,6 +51,7 @@ class WebPageEvaluation extends StatelessWidget {
         future: getController(url),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
+            /*
             Timer t = Timer(const Duration(milliseconds: 1000), () {
               snapshot.data.executeScript('''
                     var header = document.head.innerHTML
@@ -59,6 +59,8 @@ class WebPageEvaluation extends StatelessWidget {
                     window.chrome.webview.postMessage({"check": true,  "header": header, "body" : body });
                     ''');
             });
+
+             */
 
             return Stack(children: [
               Webview(snapshot.data),
@@ -114,13 +116,14 @@ class WebPageEvaluation extends StatelessWidget {
                                   valueBinder: (v) => comment = v,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     WaterlooTextButton(
                                       text: 'Back',
                                       exceptionHandler: () {},
                                       onPressed: () {
-                                          Navigator.pop(context);
+                                        Navigator.pop(context);
                                       },
                                     ),
                                     WaterlooTextButton(
@@ -129,7 +132,6 @@ class WebPageEvaluation extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.pop(context, comment);
                                       },
-
                                     )
                                   ],
                                 )
@@ -150,7 +152,7 @@ class WebPageEvaluation extends StatelessWidget {
             ]);
           }
 
-          return Container();
+          return Text(url);
         });
   }
 
@@ -175,11 +177,11 @@ class WebPageEvaluation extends StatelessWidget {
             var encoder = PngEncoder();
             var bytes2 = encoder.encodeImage(image!);
             var hash = crypto?.hash(Uint8List.fromList(bytes2)) ?? '';
-            var file = File('${Directory.current.path}/grabs/z$hash.png');
+            var file = File('${Directory.current.path}/grabs/${hash.substring(0, 8)}.png');
             file.writeAsBytesSync(bytes2);
           } else {
             var hash = crypto?.hash(Uint8List.fromList(bytes)) ?? '';
-            var file = File('${Directory.current.path}/grabs/z$hash.png');
+            var file = File('${Directory.current.path}/grabs/${hash.substring(0, 8)}.png');
             file.writeAsBytesSync(bytes);
           }
         }
@@ -187,14 +189,14 @@ class WebPageEvaluation extends StatelessWidget {
         if (map['check'] != null) {
           var content =
               '<html><head> ${map['header']} </head><body>${map['body']}</body></html>';
-          var contentHash = crypto?.generateHash(content);
+          var contentHash = crypto?.generateHash(content) ?? '';
           if (contentHash != hash && map['check'] == false) {
             var file =
-                File('${Directory.current.path}/grabs/z$contentHash.html');
+                File('${Directory.current.path}/grabs/${contentHash.substring(0, 8)}.html');
             file.writeAsStringSync(content);
           }
-          if (contentHash == hash && map['check'] == true) {
-            callback != null ? callback!(hash) : () {};
+          if (contentHash == hash && map['check'] == true && callback != null) {
+            callback!(hash);
           }
         }
       }

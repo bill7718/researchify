@@ -13,16 +13,7 @@ class ResearchifyLeftMenu extends StatelessWidget {
       margin: const EdgeInsets.all(25),
         child: Column(
       children: const [
-
-        WaterlooEventButton(
-          text: 'Create Tag',
-          event: ResearchifyController.createTag,
-        ),
-        WaterlooEventButton(
-          text: 'Tag a File',
-          event: ResearchifyController.tagFile,
-        ),
-        WaterlooEventButton(
+         WaterlooEventButton(
           text: 'Show POC Page',
           event: ResearchifyController.poc,
         ),

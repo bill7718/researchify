@@ -1,7 +1,7 @@
 library researchify;
 
 export 'main.dart';
-export 'pages/create_tag_page.dart';
+export 'zscratch/create_tag_page.dart';
 
 export 'services/researchify_controller.dart';
 

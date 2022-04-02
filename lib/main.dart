@@ -4,6 +4,7 @@ import 'package:caitlin/caitlin.dart';
 import 'package:flutter/material.dart';
 import 'package:injector/injector.dart';
 import 'package:provider/provider.dart';
+import 'package:researchify/pages/poc_page.dart';
 import 'package:researchify/services/researchify_data.dart';
 import 'package:researchify/services/researchify_navigator.dart';
 import 'package:researchify/services/researchify_controller.dart';
@@ -28,7 +29,9 @@ void main() {
       ],
       theme: garTheme(),
       child:
-          Injector.appInstance.get<Widget>(dependencyName: LandingPage.route)));
+          // Injector.appInstance.get<Widget>(dependencyName: LandingPage.route)
+          const POCPage()
+  ));
 }
 
 void registerDependencies(Injector i) {

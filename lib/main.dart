@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:injector/injector.dart';
 import 'package:provider/provider.dart';
 import 'package:researchify/pages/poc_page.dart';
+import 'package:researchify/services/hugo_service.dart';
 import 'package:researchify/services/researchify_data.dart';
 import 'package:researchify/services/researchify_navigator.dart';
 import 'package:researchify/services/researchify_controller.dart';
@@ -27,7 +28,7 @@ void main() {
         Provider<WaterlooEventHandler>.value(value: i.get<WaterlooEventHandler>()),
         Provider<ResearchifyTheme>.value(value: i.get<ResearchifyTheme>()),
       ],
-      theme: garTheme(),
+      theme: researchifyTheme(),
       child:
           // Injector.appInstance.get<Widget>(dependencyName: LandingPage.route)
           const POCPage()
@@ -41,13 +42,14 @@ void registerDependencies(Injector i) {
   var updater = DatabaseUpdater(fb);
   var state = ResearchifyState(relationshipSpecification, reader, updater);
   var text = InitialisedTextProvider([dataText]);
+  var hugo = HugoService(Directory('G:\\My Drive\\research_app\\futures'));
 
   i.registerSingleton<WaterlooTextProvider>(() => text);
   i.registerSingleton<UserJourneyNavigator>(() => ResearchifyNavigator());
   i.registerSingleton<ResearchifyTheme>(() => ResearchifyTheme());
   i.registerSingleton<WaterlooTheme>(() => i.get<ResearchifyTheme>());
   i.registerSingleton<WaterlooEventHandler>(
-      () => ResearchifyController(i.get<UserJourneyNavigator>(), state));
+      () => ResearchifyController(i.get<UserJourneyNavigator>(), state, hugo));
 
   ResearchifyController.registerDependencies();
   registerDataDependencies();

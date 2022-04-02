@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:waterloo/waterloo.dart';
 
-ThemeData garTheme() {
+ThemeData researchifyTheme() {
   var theme = ThemeData.from(colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal,
       // the background color for the body widgets in the scaffold
       backgroundColor: Colors.white

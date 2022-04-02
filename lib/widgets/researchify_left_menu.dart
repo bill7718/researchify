@@ -14,6 +14,10 @@ class ResearchifyLeftMenu extends StatelessWidget {
         child: Column(
       children: const [
          WaterlooEventButton(
+          text: 'Review Known Web Pages',
+          event: ResearchifyController.showUrls,
+        ),
+        WaterlooEventButton(
           text: 'Show POC Page',
           event: ResearchifyController.poc,
         ),

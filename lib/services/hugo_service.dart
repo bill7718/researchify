@@ -67,6 +67,16 @@ class HugoService {
     return response;
   }
 
+  Future<void> addImageComment(String path, String imageUrl, String comment ) async {
+    var c = Completer<void>();
+
+    // first get the image and put it in the static folder
+
+
+    c.complete();
+    return c.future;
+  }
+
 }
 
 

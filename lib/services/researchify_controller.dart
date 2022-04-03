@@ -93,9 +93,10 @@ class ResearchifyController extends MappedJourneyController {
 
   Future<void> handleImageComment(context, output) async {
     var c = Completer<void>();
-    state.imageUrls?.removeAt(0);
+    var url = state.imageUrls?.removeAt(0);
 
-    // get the image as png, add this image and comment to the hugo site
+    await hugo.addImageComment(state.currentUrlContext!.context, url!, output);
+
 
     if (state.imageUrls?.isNotEmpty ?? false) {
       navigator.goTo(context, currentRoute, this, state);

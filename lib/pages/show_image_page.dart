@@ -1,8 +1,12 @@
 
+import 'dart:io';
+
 import 'package:caitlin/caitlin.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:researchify/services/hugo_service.dart';
 import 'package:researchify/widgets/researchify_scaffold.dart';
+import 'package:serializable_data/serializable_data.dart';
 import 'package:waterloo/waterloo.dart';
 
 class ShowImagePage extends StatelessWidget {

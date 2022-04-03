@@ -1,6 +1,10 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:http/http.dart' as http;
+import 'package:image/image.dart';
+import 'package:serializable_data/serializable_data.dart';
 
 ///
 /// Provides services for interacting with Hugo Web site written in Markdown
@@ -9,8 +13,9 @@ class HugoService {
 
 
   final Directory home;
+  final Crypto crypto;
 
-  HugoService(this.home);
+  HugoService(this.home, this.crypto);
 
 
   Future<List<HugoUrlContext>> getUrls() async {
@@ -71,10 +76,65 @@ class HugoService {
     var c = Completer<void>();
 
     // first get the image and put it in the static folder
+    var imageResponse = await http.get(Uri.parse(imageUrl));
+    var bytes = imageResponse.bodyBytes;
+    var staticPath = getStaticPath(path);
+    var staticDirectory = Directory(staticPath);
+    if (!staticDirectory.existsSync()) {
+      staticDirectory.createSync();
+    }
+
+    if (!imageUrl.contains('png')) {
+      var hash = crypto.hash(Uint8List.fromList(bytes));
+      var file = File('${staticDirectory.path}${hash.substring(0, 12)}.jpg');
+      file.writeAsBytesSync(bytes);
+    } else {
+      var hash = crypto.hash(Uint8List.fromList(bytes));
+      var file = File('${staticDirectory.path}${hash.substring(0, 12)}.png');
+      file.writeAsBytesSync(bytes);
+    }
+
+    var contentFile = File(path);
+    var contents = contentFile.readAsLinesSync();
+    var index = 0;
+    var notesStartIndex = -1;
+    while (index < contents.length) {
+      if (contents[index] == '##### Notes') {
+        notesStartIndex = index;
+      }
+      index++;
+    }
+
+    var text = comment;
+    if (notesStartIndex == -1) {
+      text = '##### Notes\n\n$text';
+      var c = contentFile.readAsStringSync();
+      c = c + text;
+      contentFile.writeAsStringSync(c);
+    } else {
+      text = '\n$text';
+      contents.insert(notesStartIndex, text);
+      var c = '';
+      for (var line in contents) {
+        c = c + line + '\n';
+      }
+      contentFile.writeAsStringSync(c);
+    }
 
 
     c.complete();
     return c.future;
+  }
+
+  String getStaticPath(String path) {
+
+    var temp = path.substring(home.path.length);
+    temp = temp.substring('\\content\\en\\docs\\'.length);
+    var parts = temp.split('\\');
+    var response = '${home.path}static\\${parts.first}\\${parts.last.split('.').first}\\';
+
+    return response;
+
   }
 
 }

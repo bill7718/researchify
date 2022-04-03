@@ -42,7 +42,7 @@ void registerDependencies(Injector i) {
   var updater = DatabaseUpdater(fb);
   var state = ResearchifyState(relationshipSpecification, reader, updater);
   var text = InitialisedTextProvider([dataText]);
-  var hugo = HugoService(Directory('G:\\My Drive\\research_app\\futures'));
+  var hugo = HugoService(Directory('G:\\My Drive\\research_app\\futures'),  Crypto());
 
   i.registerSingleton<WaterlooTextProvider>(() => text);
   i.registerSingleton<UserJourneyNavigator>(() => ResearchifyNavigator());

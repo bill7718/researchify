@@ -15,7 +15,7 @@ class POCPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var hugo = HugoService(Directory('G:\\My Drive\\research_app\\futures'));
+    var hugo = HugoService(Directory('G:\\My Drive\\research_app\\futures'), Crypto());
     var currentContext = NotifiableUrlContext();
 
     return FutureBuilder<List<HugoUrlContext>>(

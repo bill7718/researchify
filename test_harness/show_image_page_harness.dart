@@ -34,6 +34,7 @@ void main() {
 class ShowImagePageHarnessState extends ShowImagePageState {
   @override
 
-  String get imageUrl => 'https://ichef.bbci.co.uk/news/976/cpsprodpb/A4EA/production/_123981224_gettyimages-1219507095.jpg';
+//  String get imageUrl => 'https://ichef.bbci.co.uk/news/976/cpsprodpb/A4EA/production/_123981224_gettyimages-1219507095.jpg';
+  String get imageUrl => 'https://assets.volkswagen.com/is/image/volkswagenag/new_cars_suv_hero_VW_RANGE_4-16_9-2500x1406?Zml0PWNyb3AsMSZmbXQ9d2VicCZxbHQ9Nzkmd2lkPTk2MCZoZWk9NTQwJmFsaWduPTAuODMsMC4wMCZiZmM9b2ZmJmE1Mzk=';
 
 }
